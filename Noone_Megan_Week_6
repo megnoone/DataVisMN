@@ -1,10 +1,9 @@
-
 import bqplot
 import numpy as np
 import ipywidgets
 
 data = np.random.random( (10, 10) )
-col_sc = bqplot.ColorScale(scheme="Reds")
+col_sc = bqplot.ColorScale(scheme="plasma")
 x_sc = bqplot.OrdinalScale()
 y_sc = bqplot.OrdinalScale()
 ax_col = bqplot.ColorAxis(scale = col_sc, orientation='vertical', side='right') 
@@ -12,8 +11,8 @@ ax_x = bqplot.Axis(scale = x_sc)
 ax_y = bqplot.Axis(scale = y_sc, orientation='vertical')
 heat_map = bqplot.GridHeatMap(color = data, scales = {'color':col_sc, 'row':y_sc, 'column':x_sc},
                              interactions={'click':'select'},
-                             anchor_style={'fill':'blue'},
+                             anchor_style={'fill':'green'},
                              selected_style={'opacity':1.0},
-                             unselected_style={'opacity':0.8})
+                             unselected_style={'opacity':0.75})
 fig = bqplot.Figure(marks = [heat_map], axes=[ax_col, ax_x, ax_y])
 fig
